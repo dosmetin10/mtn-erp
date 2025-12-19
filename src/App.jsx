@@ -43,106 +43,31 @@ function App() {
     setCariler(cariler.filter((cari) => cari.id !== id))
   }
 
+  // KURUMSAL KART
+  function Kart({ baslik, aciklama, onClick }) {
+    return (
+      <div
+        onClick={onClick}
+        style={{
+          border: "1px solid #ddd",
+          borderRadius: 8,
+          padding: 20,
+          width: 240,
+          cursor: "pointer",
+          background: "#fff",
+          boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
+        }}
+      >
+        <h3 style={{ margin: 0 }}>{baslik}</h3>
+        <p style={{ color: "#555" }}>{aciklama}</p>
+      </div>
+    )
+  }
+
   // ANA EKRAN
   if (ekran === "menu") {
     return (
-      <div style={{ padding: 40 }}>
+      <div style={{ padding: 40, background: "#f4f6f8", minHeight: "100vh" }}>
         <h1>MTN ERP</h1>
-        <p>Hoş geldin Metin</p>
-
-        <button
-          style={{ padding: 10, width: 220 }}
-          onClick={() => setEkran("cari")}
-        >
-          Cari Yönetimi
-        </button>
-
-        <br /><br />
-
-        <button style={{ padding: 10, width: 220 }}>
-          Stok / Malzeme
-        </button>
-
-        <br /><br />
-
-        <button style={{ padding: 10, width: 220 }}>
-          Teklifler
-        </button>
-      </div>
-    )
-  }
-
-  // CARI YÖNETIMI
-  if (ekran === "cari") {
-    return (
-      <div style={{ padding: 40 }}>
-        <h1>Cari Yönetimi</h1>
-
-        <button onClick={() => setEkran("menu")}>
-          ← Ana Ekrana Dön
-        </button>
-
-        <hr />
-
-        <h3>{duzenlenenId ? "Cari Düzenle" : "Yeni Cari Ekle"}</h3>
-
-        <input
-          placeholder="Cari Adı"
-          value={cariAdi}
-          onChange={(e) => setCariAdi(e.target.value)}
-        />
-        <br /><br />
-
-        <input
-          placeholder="Telefon"
-          value={telefon}
-          onChange={(e) => setTelefon(e.target.value)}
-        />
-        <br /><br />
-
-        <button onClick={cariEkleVeyaGuncelle}>
-          {duzenlenenId ? "Kaydet" : "Cari Ekle"}
-        </button>
-
-        {duzenlenenId && (
-          <button
-            style={{ marginLeft: 10 }}
-            onClick={() => {
-              setDuzenlenenId(null)
-              setCariAdi("")
-              setTelefon("")
-            }}
-          >
-            İptal
-          </button>
-        )}
-
-        <hr />
-
-        <h3>Cari Listesi</h3>
-
-        {cariler.length === 0 && <p>Henüz cari yok</p>}
-
-        <ul>
-          {cariler.map((cari) => (
-            <li key={cari.id}>
-              <strong>{cari.cariAdi}</strong> – {cari.telefon}
-              <br />
-              <button onClick={() => cariDuzenle(cari)}>
-                Düzenle
-              </button>
-              <button
-                style={{ marginLeft: 10 }}
-                onClick={() => cariSil(cari.id)}
-              >
-                Sil
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-}
-
-export default App
+        <p style={{ color: "#555" }}>
+          Mekanik · Doğalgaz · Proje
