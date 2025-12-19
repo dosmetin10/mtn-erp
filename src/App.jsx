@@ -70,4 +70,6 @@ function App() {
       <div style={{ padding: 40, background: "#f4f6f8", minHeight: "100vh" }}>
         <h1>MTN ERP</h1>
         <p style={{ color: "#555" }}>
-          Mekanik · Doğalgaz · Proje
+  Mekanik · Doğalgaz · Proje Yönetimi
+</p>
+
