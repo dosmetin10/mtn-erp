@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
   const [ekran, setEkran] = useState("menu")
@@ -9,67 +9,34 @@ function App() {
   const [telefon, setTelefon] = useState("")
   const [duzenlenenId, setDuzenlenenId] = useState(null)
 
+  // SAYFA AÇILINCA LOCALSTORAGE'DAN OKU
+  useEffect(() => {
+    const kayitliCariler = localStorage.getItem("cariler")
+    if (kayitliCariler) {
+      setCariler(JSON.parse(kayitliCariler))
+    }
+  }, [])
+
+  // LOCALSTORAGE'A YAZ
+  function carileriKaydet(yeniListe) {
+    setCariler(yeniListe)
+    localStorage.setItem("cariler", JSON.stringify(yeniListe))
+  }
+
   function cariEkleVeyaGuncelle() {
     if (!cariAdi) return
 
+    let yeniListe
+
     if (duzenlenenId) {
-      setCariler(
-        cariler.map((cari) =>
-          cari.id === duzenlenenId
-            ? { ...cari, cariAdi, telefon }
-            : cari
-        )
+      yeniListe = cariler.map((cari) =>
+        cari.id === duzenlenenId
+          ? { ...cari, cariAdi, telefon }
+          : cari
       )
       setDuzenlenenId(null)
     } else {
-      setCariler([
+      yeniListe = [
         ...cariler,
         { id: Date.now(), cariAdi, telefon }
-      ])
-    }
-
-    setCariAdi("")
-    setTelefon("")
-  }
-
-  function cariDuzenle(cari) {
-    setCariAdi(cari.cariAdi)
-    setTelefon(cari.telefon)
-    setDuzenlenenId(cari.id)
-  }
-
-  function cariSil(id) {
-    if (!window.confirm("Bu cariyi silmek istiyor musun?")) return
-    setCariler(cariler.filter((cari) => cari.id !== id))
-  }
-
-  // KURUMSAL KART
-  function Kart({ baslik, aciklama, onClick }) {
-    return (
-      <div
-        onClick={onClick}
-        style={{
-          border: "1px solid #ddd",
-          borderRadius: 8,
-          padding: 20,
-          width: 240,
-          cursor: "pointer",
-          background: "#fff",
-          boxShadow: "0 2px 6px rgba(0,0,0,0.08)"
-        }}
-      >
-        <h3 style={{ margin: 0 }}>{baslik}</h3>
-        <p style={{ color: "#555" }}>{aciklama}</p>
-      </div>
-    )
-  }
-
-  // ANA EKRAN
-  if (ekran === "menu") {
-    return (
-      <div style={{ padding: 40, background: "#f4f6f8", minHeight: "100vh" }}>
-        <h1>MTN ERP</h1>
-        <p style={{ color: "#555" }}>
-  Mekanik · Doğalgaz · Proje Yönetimi
-</p>
-
+      ]
