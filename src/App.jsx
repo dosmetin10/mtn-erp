@@ -1,51 +1,26 @@
-import { useState } from "react"
-import { supabase } from "./supabase"
-
 function App() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
-
-  async function girisYap() {
-    const email = `${username}@mtn.local`
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
-
-    if (error) {
-      setError("Giriş başarısız")
-    } else {
-      setError("")
-      alert("Giriş başarılı")
-    }
-  }
-
   return (
     <div style={{ padding: 40 }}>
-      <h2>MTN ERP Giriş</h2>
+      <h1>MTN ERP</h1>
+      <p>Hoş geldin Metin</p>
 
-      <input
-        placeholder="Kullanıcı adı"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+      <div style={{ marginTop: 30 }}>
+        <button style={{ padding: 10, width: 200 }}>
+          Cari Yönetimi
+        </button>
 
-      <br /><br />
+        <br /><br />
 
-      <input
-        type="password"
-        placeholder="Şifre"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <button style={{ padding: 10, width: 200 }}>
+          Stok / Malzeme
+        </button>
 
-      <br /><br />
+        <br /><br />
 
-      <button onClick={girisYap}>Giriş Yap</button>
-
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        <button style={{ padding: 10, width: 200 }}>
+          Teklifler
+        </button>
+      </div>
     </div>
   )
 }
