@@ -12,7 +12,7 @@ export default function App() {
     <div className="dashboard">
       <aside className="sidebar glass">
         <div className="logo-area">
-          <img src={mtnLogo} alt="MTN Enerji" className="logo" />
+          <img src={logo} alt="MTN Enerji" />
           <h1 className="brand">MTN ERP</h1>
           <p className="subtitle">Mühendislik • Doğalgaz</p>
         </div>
