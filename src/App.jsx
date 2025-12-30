@@ -12,10 +12,11 @@ export default function App() {
     <div className="dashboard">
       <aside className="sidebar glass">
         <div className="logo-area">
-          <img src={logo} alt="MTN Enerji" />
+          <img src={mtnLogo} alt="MTN Enerji" />
           <h1 className="brand">MTN ERP</h1>
           <p className="subtitle">Mühendislik • Doğalgaz</p>
         </div>
+
         <nav>
           <ul>
             <li>📦 Stok Girişi</li>
@@ -37,15 +38,17 @@ export default function App() {
         <section className="cards">
           <div className="card glass">
             <h3>Stok Yönetimi</h3>
-            <p>Malzeme girişlerini takip edin.</p>
+            <p>Malzeme giriş ve çıkışlarını yönetin.</p>
           </div>
+
           <div className="card glass">
             <h3>Cariler</h3>
             <p>Müşteri ve tedarikçi bilgilerini yönetin.</p>
           </div>
+
           <div className="card glass">
             <h3>Teklifler</h3>
-            <p>PDF teklif oluşturun ve dışa aktarın.</p>
+            <p>PDF teklif oluşturun ve paylaşın.</p>
           </div>
         </section>
 
