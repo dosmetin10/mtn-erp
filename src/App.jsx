@@ -15,6 +15,25 @@ export default function App() {
           <img src={logo} alt="MTN Enerji" />
           <h1 className="brand">MTN ERP</h1>
           <p className="subtitle">Mühendislik • Doğalgaz</p>
+
+          {/* MUHASEBE BUTONU */}
+          <a
+            href="https://app.appsmith.com/app/bu-sayfa-pdf-alnabilir/page1-6942b8fbc5ffab0df02dbf4a"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              marginTop: "16px",
+              padding: "12px 18px",
+              backgroundColor: "#0d6efd",
+              color: "#ffffff",
+              borderRadius: "8px",
+              textDecoration: "none",
+              fontWeight: "600"
+            }}
+          >
+            📊 Muhasebe / Stok Paneline Git
+          </a>
         </div>
       </aside>
     </div>
